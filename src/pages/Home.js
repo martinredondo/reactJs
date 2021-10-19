@@ -1,11 +1,12 @@
 import React from 'react';
 import Navbar from '../components/Navbar';
+import ItemListContainer from '../components/ItemListContainer';
 
 const Home = () => {
     return (
         <>
             <Navbar />
-            <h2 style={{textAlign: 'center'}}>Ofertas de la semana</h2>
+            <ItemListContainer titulo="Ofertas de la semana"/>
         </>
     );
 };

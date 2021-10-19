@@ -34,3 +34,18 @@
   height: 30px;
   margin: 10px;
 }
+.item{
+  display: flex;
+  flex-direction: column;
+  flex-wrap: nowrap;
+  justify-content: center;
+  width: 200px;
+  border: black solid 2px ;
+  padding: 2rem;
+  margin: 1rem 2rem ;
+}
+.item-container{
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
