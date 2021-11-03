@@ -1,27 +1,30 @@
 import React, {useState , useEffect} from 'react'
 import data from '../data/data.js'
 import ItemList from './ItemList'
+import {useParams} from 'react-router-dom'
 
 const ItemListContainer = (props) => {
-    const [productos,setProductos] = useState([])
-    const [cargando,setCargando] = useState(true)
+    const [items,setItems] = useState([]);
+    const [loader,setLoader] = useState(true);
+    const {catId} = useParams();
 
     useEffect(() =>{
-        const listaDeProductos = new Promise((res,rej)=>{
+        setLoader(true);
+        const getItems = new Promise((resolve)=>{
             setTimeout(()=>{
-                res(data)
+                resolve(data)
             },2000)
+        });
+        getItems.then((res)=>{
+            catId ? setItems(res.filter((i)=> i.category === catId)) : setItems(res);
         })
-        listaDeProductos.then((data)=>{
-            setProductos(data)
-            setCargando(false)
-        })
-    },[])
+        .finally(() => setLoader(false));
+    },[catId]);
 
-    return (
+    return loader ? <h3 style={{textAlign: 'center'}}>Cargando...</h3> :(
         <div>
-            <h1>{props.titulo}</h1>
-            {cargando ? <h2>Cargando productos...</h2> : <ItemList productos={productos} />}
+            <h1 style={{textAlign: 'center'}}>{props.titulo}</h1>
+            <ItemList items={items} />
         </div>
     )
 }
