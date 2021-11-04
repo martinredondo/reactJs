@@ -36,7 +36,7 @@ Uso de React Router Dom para la navegación
 
 ## Aplicación en funcionamiento
 
-![DreamBooks en funcionamiento](https://github.com/martinredondo/reactJs/blob/main/Gif-explicativo.gif)
+![DreamBooks en funcionamiento](https://github.com/martinredondo/reactJs/blob/main/Gif%20explicativo.gif)
 
 ### Autor
 
