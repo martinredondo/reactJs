@@ -12,7 +12,9 @@ const categories = [
 
   return (
     <>
-    <CartWidget />
+    <Link to='/cart'>
+      <CartWidget />
+    </Link>
     <nav className="nav-container">
     <Link to="/">
       <h1 className="company-name" style={{color: 'white', marginLeft:'1rem'}}>Dream books.</h1>
