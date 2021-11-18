@@ -20,8 +20,8 @@ function App() {
         <Route path='/cart' exact>
           <Cart/>
         </Route>
-        <Route path='/category/:catId' element={<ItemListContainer titulo="Sagas"/>}exact/>
-        <Route path='/item/:id' exact element={<ItemDetailContainer/>} />
+        <Route path='/category/:categoryId' element={<ItemListContainer titulo="Sagas"/>}exact/>
+        <Route path='/product/:itemId' exact element={<ItemDetailContainer/>} />
       </Switch>
     </CartFunction>
     </BrowserRouter>

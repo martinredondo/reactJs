@@ -22,7 +22,7 @@ const categories = [
       {categories.map((cat) => {
         return (
             <div className="links" key={cat.id}>
-              <NavLink to={cat.adress} exact activeClassName="activeClass" className="sections">
+            <NavLink to={cat.adress} exact activeClassName="activeClass" className="sections">
                 {cat.text}
               </NavLink>
             </div>
