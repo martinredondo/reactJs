@@ -21,12 +21,12 @@ const ItemListContainer = (props) => {
         getDocs(myItems)
             .then((res) => {
                 const results = res.docs.map((doc) => {
-                    return {...doc.data(), id:doc.id};
+                    return {...doc.data(), id:doc.id };
                 });
                 setItems(results);
             })
             .finally(() => setLoader(false));
-    })
+    }, [categoryId])
     return loader ? (
         <Spinner/>
     ) : (
