@@ -1,27 +1,31 @@
 import React,{useState, useEffect} from 'react';
-import ItemDetail from './ItemDetail';
-import data from '../data/data';
-import {useParams} from 'react-router-dom';
+import { useParams } from 'react-router-dom';
+import  ItemDetail  from './ItemDetail';
+import Spinner from './Spinner';
+import db from './firebaseConfig';
+import { doc, getDoc } from 'firebase/firestore';
 
 const ItemDetailContainer = () => {
-    const [item,setItem] = useState({});
-    const [loader,setLoader] = useState(true);
-    const {id} = useParams();
+    const [product, setProduct] = useState({});
+    const [loader, setLoader] = useState(true);
 
-    useEffect(() =>{
-        setLoader(true);
-        const getItems = new Promise((resolve) =>{
-            setTimeout(()=>{
-                resolve(data);
-            },2000);
-        });
+    const { itemId } = useParams();
 
-        getItems
-        .then((res) => {
-            setItem(res.find((i) => i.id === id));
-        })
-        .finally(() => setLoader(false));
-    }, [id]);
-    return loader ? <h3 style={{textAlign: 'center'}}>Cargando...</h3> : <ItemDetail {...item} />;
-};
+  useEffect(() => {
+    setLoader(true);
+
+    const myItem = doc(db, 'products', itemId);
+
+    getDoc(myItem)
+      .then((res) => {
+        const result = { id: res.id, ...res.data() };
+        setProduct(result);
+      })
+      .finally(() => {
+        setLoader(false);
+      });
+  }, []);
+    return loader ? <Spinner/> : <ItemDetail {...product} />
+}
 export default ItemDetailContainer;
+

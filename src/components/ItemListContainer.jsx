@@ -1,31 +1,39 @@
-import React, {useState , useEffect} from 'react'
-import data from '../data/data.js'
-import ItemList from './ItemList'
-import {useParams} from 'react-router-dom'
+import React, {useState , useEffect} from 'react';
+import ItemList from './ItemList';
+import { useParams } from 'react-router-dom';
+import Spinner from './Spinner';
+import db from './firebaseConfig';
+import { collection, query, where, getDocs} from 'firebase/firestore';
 
 const ItemListContainer = (props) => {
-    const [items,setItems] = useState([]);
-    const [loader,setLoader] = useState(true);
-    const {catId} = useParams();
+    const [items, setItems] = useState([]);
+    const [loader, setLoader] = useState(true);
 
-    useEffect(() =>{
+    const { categoryId } = useParams();
+
+    useEffect(() => {
         setLoader(true);
-        const getItems = new Promise((resolve)=>{
-            setTimeout(()=>{
-                resolve(data)
-            },2000)
-        });
-        getItems.then((res)=>{
-            catId ? setItems(res.filter((i)=> i.category === catId)) : setItems(res);
-        })
-        .finally(() => setLoader(false));
-    },[catId]);
 
-    return loader ? <h3 style={{textAlign: 'center'}}>Cargando...</h3> :(
+        const myItems = categoryId
+            ? query(collection(db,'products'), where('category', '==', categoryId ))
+            : collection(db,'products');
+
+        getDocs(myItems)
+            .then((res) => {
+                const results = res.docs.map((doc) => {
+                    return {...doc.data(), id:doc.id};
+                });
+                setItems(results);
+            })
+            .finally(() => setLoader(false));
+    })
+    return loader ? (
+        <Spinner/>
+    ) : (
         <div>
             <h1 style={{textAlign: 'center'}}>{props.titulo}</h1>
             <ItemList items={items} />
-        </div>
-    )
-}
+        </div> 
+    );
+};
 export default ItemListContainer;

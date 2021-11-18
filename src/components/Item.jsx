@@ -11,6 +11,7 @@ const Item = ({name,desc,price,image,id,category}) => {
                 <p>precio: ${price}</p>
             </div>
         </Link>
-    )
-}
-export default Item;
+    );
+};
+export default Item ;
+

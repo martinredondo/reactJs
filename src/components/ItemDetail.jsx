@@ -2,16 +2,19 @@ import React,{useState,useContext} from 'react'
 import ItemCount from './ItemCount'
 import {Link} from 'react-router-dom'
 import {Context} from './CartContext'
+import { Notyf } from 'notyf';
+import 'notyf/notyf.min.css';
 
 const ItemDetail = ({id,name,image,price,stock,desc,trailer}) => {
     const [buy, setBuy] = useState(false)
     const {onAdd} = useContext(Context)
+    const notyf = new Notyf();
     const agregar = (props) => {
         setBuy(true)
-        onAdd({id,name,price}, props.unidades)
-        alert(`Agregaste ${props.unidades} al carrito!`)
+        onAdd({id,name,price,image}, props.unidades)
+        notyf.success(`Agregaste ${props.unidades} producto/s al carrito!`);
     }
-
+    
     return !id ?(
         <h1 style={{textAlign: 'center'}}>El item no existe =(</h1>
     ):(
