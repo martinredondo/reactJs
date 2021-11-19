@@ -12,18 +12,22 @@ function App() {
    <>
     <BrowserRouter>
     <CartFunction>
-      <Navbar />
-      <Switch>
-        <Route  path='/' exact>
-          <ItemListContainer titulo="Todos nuestros libros"/>
-        </Route>
-        <Route path='/cart' exact>
-          <Cart/>
-        </Route>
-        <Route path='/category/:categoryId' element={<ItemListContainer titulo="Sagas"/>}exact/>
-        <Route path='/product/:itemId' exact element={<ItemDetailContainer/>} />
-      </Switch>
-    </CartFunction>
+          <Navbar />
+          <Switch>
+            <Route exact path='/cart'>
+              <Cart/>
+            </Route>
+            <Route exact path='/category/:categoryId' >
+              <ItemListContainer titulo="Sagas"/>
+            </Route>
+            <Route exact path='/product/:itemId' >
+              <ItemDetailContainer/>
+            </Route>
+            <Route exact path='/'>
+              <ItemListContainer titulo="Todos nuestros libros"/>
+            </Route>
+          </Switch>
+        </CartFunction>
     </BrowserRouter>
    </>
   );

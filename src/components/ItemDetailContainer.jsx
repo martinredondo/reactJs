@@ -24,7 +24,7 @@ const ItemDetailContainer = () => {
       .finally(() => {
         setLoader(false);
       });
-  }, []);
+  }, [itemId]);
     return loader ? <Spinner/> : <ItemDetail {...product} />
 }
 export default ItemDetailContainer;
