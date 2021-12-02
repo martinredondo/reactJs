@@ -3,7 +3,7 @@ import ItemList from './ItemList';
 import { useParams } from 'react-router-dom';
 import Spinner from './Spinner';
 import db from './firebaseConfig';
-import { collection, query, where, getDocs} from 'firebase/firestore';
+import { collection, query, where, getDocs, orderBy} from 'firebase/firestore';
 
 const ItemListContainer = (props) => {
     const [items, setItems] = useState([]);
@@ -16,7 +16,7 @@ const ItemListContainer = (props) => {
 
         const myItems = categoryId
             ? query(collection(db,'products'), where('category', '==', categoryId ))
-            : collection(db,'products');
+            : query(collection(db,'products'), orderBy('category'));
 
         getDocs(myItems)
             .then((res) => {
@@ -32,7 +32,7 @@ const ItemListContainer = (props) => {
     ) : (
         <div>
             <h1 style={{textAlign: 'center'}}>{props.titulo}</h1>
-            <ItemList items={items} />
+            <ItemList items={items}/>
         </div> 
     );
 };

@@ -4,15 +4,16 @@ import {BrowserRouter, Switch, Route} from 'react-router-dom';
 import Navbar from './components/Navbar';
 import ItemDetailContainer from './components/ItemDetailContainer';
 import ItemListContainer from './components/ItemListContainer';
-import {CartFunction} from './components/CartContext'
+import {CartFunction} from './components/CartContext';
 import Cart from './components/Cart';
 
 function App() {
+
   return (
    <>
     <BrowserRouter>
     <CartFunction>
-          <Navbar />
+          <Navbar/>
           <Switch>
             <Route exact path='/cart'>
               <Cart/>

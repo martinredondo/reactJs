@@ -1,13 +1,15 @@
-import React, {useState} from 'react'
+import React, {useState} from 'react';
+import { Notyf } from 'notyf';
 
 const ItemCount = (props) => {
     const [stock, setStock] = useState(props.stock);
-    const [unidades, setUnidades] = useState(0)
+    const [unidades, setUnidades] = useState(0);
+    const notyf = new Notyf();
 
     const handleStock = {
         sumaStock: () => {
             if(stock===0){
-                alert('Actualmente no contamos con mas stock')
+                notyf.error('Actualmente no contamos con mas stock');
             } else {
                 setUnidades(unidades +1)
                 setStock(stock -1)
@@ -15,7 +17,7 @@ const ItemCount = (props) => {
         },
         restaStock: () => {
             if(unidades===0){
-                alert('Seleccione por lo menos 1 unidad')
+                notyf.error('Seleccione por lo menos 1 unidad');
             } else {
                 setUnidades(unidades -1)
                 setStock(stock +1)
@@ -34,10 +36,11 @@ const ItemCount = (props) => {
                 <p>Stock disponible: {stock}</p>
             </div>
             <div className="agregar-carrito">
-                <button className="btn" onClick={()=>props.onAdd({unidades})}>Agregar al carrito</button>
+                {unidades === 0 ? "" : <button className="btn" onClick={()=>props.onAdd({unidades})}>Agregar al carrito</button>}
             </div>
         </div>
     )
 }
 
 export default ItemCount
+
