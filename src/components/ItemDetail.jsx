@@ -25,7 +25,7 @@ const ItemDetail = ({id,name,image,price,stock,desc,trailer}) => {
             <p style={{fontSize:'larger'}}><b>Precio: ${price}</b></p>
             {!buy ? <ItemCount stock={stock} onAdd={agregar}/> : <Link to='/cart'><button className='btn'>Terminar compra</button></Link>}
             <h2>Trailer</h2>
-            <iframe width="560" height="315" src={trailer} title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            <iframe width="560" height="315" src={trailer} title="YouTube video player" frameBorder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowFullScreen></iframe>
         </div>
     )
 }

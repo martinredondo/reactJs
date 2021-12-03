@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-const Item = ({name,desc,price,image,id,category}) => {
+const Item = ({name,price,image,id,category}) => {
     return (
         <Link to={`/product/${id}`} style={{textDecoration:"none"}}>
             <div className={`item ${category}-category`}>

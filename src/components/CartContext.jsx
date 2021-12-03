@@ -37,7 +37,7 @@ const CartFunction = ({children})=>{
             if (addProducts !== ''){
                 setCart([]);
                 setUnidades(0)
-                notyf.success("Compra realizada!Muchas gracias!");
+                notyf.success(`Compra realizada, su id es para seguimiento es: ${addProducts.id} !Muchas gracias!`);
             }
         } catch (error){
             console.log(error);
@@ -67,6 +67,7 @@ const CartFunction = ({children})=>{
         setCart([])
         setTotal(0)
         setUnidades(0)
+        notyf.error("Se ha vaciado el carrito de compras!");
     }
     const removeItems = (id,precio,cantidad) => {
         const productosFiltrados = cart.filter((item) => item.id !== id)

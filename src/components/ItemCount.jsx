@@ -42,5 +42,5 @@ const ItemCount = (props) => {
     )
 }
 
-export default ItemCount
+export default ItemCount;
 
