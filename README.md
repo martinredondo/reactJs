@@ -23,5 +23,9 @@ Uso de React Router Dom para la navegación.
 Uso de Notyf para las notificaciones.
 Uso de FireBase para persistencia de datos.
 
+## Aplicación en funcionamiento
+
+![Dream books en funcionamiento](https://github.com/martinredondo/reactJs/blob/main/dreambooks-en-funcionamiento.gif)
+
 ### Autor
 Juan Martin Redondo Canessa
