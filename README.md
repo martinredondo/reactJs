@@ -1,5 +1,5 @@
-# DeliCupcakes
-DeliCupcakes es un e-commerce para la venta de libros de ciencia ficcion que haran volar tu imaginacion!
+# Dreambooks
+Dreambooks es un e-commerce para la venta de libros de ciencia ficcion que haran volar tu imaginacion!
 Cuenta con
 - Filtro por categorías: tomando las categorías de la base de datos se generan filtros de productos.
 - Carrito: cuenta vista completa de los items del carrito, su total, y la opción de sacar un producto del carrito.
